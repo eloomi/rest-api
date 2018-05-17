@@ -3,13 +3,15 @@ The eloomi Rest API contains all the needed information and details to get start
 
 ## Authentication
 Authenticating with the API is done with bearer tokens, and requires a Client ID and Client Secret, which can be provided by reaching out to us, and the process to authenticate is as follow.
-Initiate a POST-Request to `https://api.eloomi.com/oauth/token` with the following headers:
-`
+Initiate a POST-Request to 
+```https://api.eloomi.com/oauth/token```
+with the following headers:
+``` 
 grant_type: client_credentials
 client_id: 200
 client_secret: JG4m3eKWGMPKLYJL7DV8dquDjKgXYsGlZO2VL5i4
 scope: *
-`
+```
 The response to this request will look as the following:
 ```json
 {
