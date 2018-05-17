@@ -4,7 +4,9 @@ The eloomi Rest API contains all the needed information and details to get start
 ## Authentication
 Authenticating with the API is done with bearer tokens, and requires a Client ID and Client Secret, which can be provided by reaching out to us, and the process to authenticate is as follow.
 Initiate a POST-Request to 
-```https://api.eloomi.com/oauth/token```
+```
+https://api.eloomi.com/oauth/token
+```
 with the following headers:
 ``` 
 grant_type: client_credentials
@@ -22,9 +24,20 @@ The response to this request will look as the following:
 ```
 The value of "access_token" is to be used for any further requests made to the API, as a Bearer Token header.
 
+## Rate Limiting
+In the Rest API, Rate Limiting is enabled and you're limited to 600 requests pr. rolling 60 seconds.
+
+In the response of any request, a few headers will be added to tell what your current limit is, and how many requests you have remaining.
+
+```
+X-RateLimit-Limit : 600
+X-RateLimit-Remaining : 599
+```
+If you exhaust your ratelimit, an additional header will be provided to tell when your ratelimit is reset.
+
 ## Users
 This will list the endpoints valid for managing users.
-- List users : `GET /v3/users`
+- [List users](users/get.md) : `GET /v3/users`
 - Get user : `GET /v3/users/:id`
 - Create user : `POST /v3/users`
 - Update user : `PATCH /v3/users/:id`
