@@ -17,25 +17,25 @@ Creates the specified user and returns the user
 | email | Body | String  | Yes |  |
 | username | Body | String  | No | Alternative for email so the user can log in with username and not email. |
 | personal_email | Body | String  | No | Secondary email |
-| activate | Body | Boolean  | No | Set the value to 1 or true, to activate the user. Set the value to 0 or false, to deactivate the user.	 |
+| activate | Body | Mixed  | No | Set the value to 1 or true, to activate the user. Set the value to 0 or false, to deactivate the user.	 |
 | gender | Body | String  | No | (Format: "M"/"F") |
 | birthday | Body | String  | No | (Format: "yyyy-mm-dd") |
 | language_code | Body | String  | No | (Format: "en"/"da") |
 | language_iso | Body | String  | No | Any valid language ISO supported by eloomi (Format: "US"/"DK") |
 | title | Body | String  | No |  |
 | phone | Body | String  | No |  |
-| generic_role | Body | String  | No | User Property field, grants no functionality |
-| initials | Body | String  | No | User Property field, grants no functionality |
-| legal | Body | String  | No | User Property field, grants no functionality |
-| level | Body | String  | No | User Property field, grants no functionality |
-| country | Body | String  | No | User Property field, grants no functionality |
-| location | Body | String  | No | User Property field, grants no functionality |
+| generic_role | Body | String  | No | User Property field |
+| initials | Body | String  | No | User Property field |
+| legal | Body | String  | No | User Property field |
+| level | Body | String  | No | User Property field |
+| country | Body | String  | No | User Property field |
+| location | Body | String  | No | User Property field |
 | department_code | Body | String[]  | No | Array of `code's` for the departments that the user should join (should not be used with department_id) |
 | department_id | Body | Integer[]  | No | Array of `id's` for the departments the user should join (should not be used with department_code) |
 | user_permission | Body | String  | No | The permissions of the user (Format: `user`/`company adm.`) - Default: `user` |
-| direct_manager_ids | Body | Integer[] | No | Array of `id's` of the direct managers that the user should have. **OBS: This syncs direct managers.** |
+| direct_manager_ids | Body | Integer[] | No | Array of `id's` of the direct managers that the user should have. **OBS: This synchronizes(overrides) direct managers.** |
 | add_direct_manager_ids | Body | Integer[] | No | Array of `id's` of the direct managers that the user should have. **OBS: This appends direct managers.** |
-| direct_manager_employee_ids | Body | Mixed[] | No | Array of `employee_id's` of the direct managers that the user should have. **OBS: This syncs direct managers.** |
+| direct_manager_employee_ids | Body | Mixed[] | No | Array of `employee_id's` of the direct managers that the user should have. **OBS: This synchronizes(overrides) direct managers.** |
 | add_direct_manager_employee_ids | Body | Mixed[] | No | Array of `employee_id's` of the direct managers that the user should have. **OBS: This appends direct managers.** |
 
 ## Request example
@@ -104,7 +104,7 @@ curl --request POST \
 }
 ```
 
-## Failure Response
+## Error Responses
 This failure response occurs when an email is not provided
 
 **Code**: `400 Bad Request`

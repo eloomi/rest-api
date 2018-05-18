@@ -1,7 +1,7 @@
 # Updates a specific user
 Updates the specified user and returns the user with the new data
 
-**URL**: `/v3/users/:pk`
+**URL**: `/v3/users-employee_id/:employee_id`
 
 **Method**: `PATCH`
 
@@ -42,7 +42,7 @@ Updates the specified user and returns the user with the new data
 ## Request example
 ```bash
 curl --request PATCH \
-  --url 'https://api.eloomi.com/v3/users/:pk' \
+  --url 'https://api.eloomi.com/v3/users-employee_id/:employee_id' \
   --header 'Content-Type: application/json' \
   --header 'ClientId: <your_client_id>' \
   --header 'Authorization: Bearer <your_bearer_token>' \
@@ -105,7 +105,7 @@ curl --request PATCH \
 ```
 
 ## Error Responses
-This failure response occurs when providing a non-existing `:pk` for the request
+This failure response occurs when providing a non-existing `:employee_id` for the request
 
 **Code**: `204 No Content`
 
