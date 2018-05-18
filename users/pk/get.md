@@ -5,8 +5,16 @@ Returns a specific user from the API.
 
 **Method**: `GET`
 
-
 **Parameters**: None
+
+## Request example
+```bash
+curl --request GET \
+  --url 'https://api.eloomi.com/v3/users/:pk' \
+  --header 'Content-Type: application/json' \
+  --header 'ClientId: <your_client_id>' \
+  --header 'Authorization: Bearer <your_bearer_token>'
+```
 
 ## Success Response
 **Code**: `200 OK`

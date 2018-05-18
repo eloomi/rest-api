@@ -12,6 +12,15 @@ Lists all users in the platform that are not deleted.
 | per_page | Query | Integer (Default: `25`) | No | Paginates the result by value provided |
 | mode | Query | String (Options: `all`, `pending`, `active`, `inactive`) (Default: `all`) | No | Filters result on user-status |
 
+## Request example
+```bash
+curl --request GET \
+  --url 'https://api.eloomi.com/v3/users' \
+  --header 'Content-Type: application/json' \
+  --header 'ClientId: <your_client_id>' \
+  --header 'Authorization: Bearer <your_bearer_token>'
+```
+
 ## Success Response
 **Code**: `200 OK`
 

@@ -38,13 +38,17 @@ Creates the specified user and returns the user
 | direct_manager_employee_ids | Body | Mixed[] | No | Array of `employee_id's` of the direct managers that the user should have. **OBS: This syncs direct managers.** |
 | add_direct_manager_employee_ids | Body | Mixed[] | No | Array of `employee_id's` of the direct managers that the user should have. **OBS: This appends direct managers.** |
 
-
 ## Request example
-```json
-{
-	"first_name": "API Testing",
-	"email": "api_test@eloomi.com"
-}
+```bash
+curl --request POST \
+  --url 'https://api.eloomi.com/v3/users' \
+  --header 'Content-Type: application/json' \
+  --header 'ClientId: <your_client_id>' \
+  --header 'Authorization: Bearer <your_bearer_token>' \
+  --data '{
+          	"first_name": "API Testing",
+          	"email": "api_test@eloomi.com"
+          }'
 ```
 
 ## Success Response
