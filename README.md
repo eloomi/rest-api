@@ -67,7 +67,7 @@ If you exhaust your ratelimit, an additional header will be provided to tell whe
 }
 ```
 
-##[Users](users/README.md)
+## [Users](users/README.md)
 Valid endpoints for the users API.
 - [List users](users/get.md) : `GET /v3/users`
 - Create user : `POST /v3/users`
