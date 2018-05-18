@@ -81,8 +81,17 @@ If you exhaust your ratelimit, an additional header will be provided to tell whe
 - [Update user by EmployeeID](users/employee_id/patch.md) : `PATCH /v3/users-employee_id/:employee_id` 
 - [Delete user by EmployeeID](users/employee_id/delete.md) : `DELETE /v3/users-employee_id/:employee_id`
 
-## Units (Departments)
-This will list the endpoints valid for managing units (departments).
+## [Units (Departments)](units/README.md)
+- [List units](units/get.md) : `GET /v3/units`
+- [Create unit](units/post.md) : `POST /v3/units`
+- [Get unit](units/pk/get.md) : `GET /v3/units/:pk`
+- [Update unit](units/pk/patch.md) : `PATCH /v3/units/:pk`
+- [Delete unit](units/pk/delete.md) : `DELETE /v3/units/:pk`
+
+**Custom Unit-endpoints:**
+- [Get unit by Code](units/units_code/get.md) : `GET /v3/units-code/:code` 
+- [Update unit by Code](units/units_code/patch.md) : `PATCH /v3/units-code/:code` 
+- [Delete unit by Code](units/units_code/delete.md) : `DELETE /v3/units-code/:code` 
 
 ## Teams
 This will list the endpoints valid for managing teams.
