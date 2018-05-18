@@ -13,6 +13,7 @@ Lists all users in the platform that are not deleted.
 | mode | Query | String (Options: `all`, `pending`, `active`, `inactive`) (Default: `all`) | No | Filters result on user-status |
 
 ## Request example
+**Return a list of all users in the platform**
 ```bash
 curl --request GET \
   --url 'https://api.eloomi.com/v3/users' \
@@ -20,6 +21,7 @@ curl --request GET \
   --header 'ClientId: <your_client_id>' \
   --header 'Authorization: Bearer <your_bearer_token>'
 ```
+**Return a list of all active users in the platform**
 ```bash
 curl --request GET \
   --url 'https://api.eloomi.com/v3/users?mode=active' \
