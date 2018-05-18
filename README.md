@@ -37,7 +37,7 @@ If you exhaust your ratelimit, an additional header will be provided to tell whe
 
 
 ## Failure Responses
-**Invalid Bearer Token**
+**Invalid `Bearer Token`**
 
 **Status**: 401 Unauthorized
 ```json
@@ -45,7 +45,7 @@ If you exhaust your ratelimit, an additional header will be provided to tell whe
     "error": "Unauthenticated."
 }
 ```
-
+---
 **Invalid `client_id` or `client_secret`**
 
 **Status**: 400 Bad Request 
@@ -55,7 +55,7 @@ If you exhaust your ratelimit, an additional header will be provided to tell whe
     "message": "Client authentication failed"
 }
 ```
-
+---
 **Invalid `scope`**
 
 **Status**: 400 Bad Request 
@@ -70,7 +70,6 @@ If you exhaust your ratelimit, an additional header will be provided to tell whe
 #Endpoints 
 
 ## [Users](users/README.md)
-Valid endpoints for the users API.
 - [List users](users/get.md) : `GET /v3/users`
 - [Create user](users/post.md) : `POST /v3/users`
 - [Get user](users/pk/get.md) : `GET /v3/users/:pk`
@@ -82,40 +81,23 @@ Valid endpoints for the users API.
 - [Update user by EmployeeID](users/employee_id/patch.md) : `PATCH /v3/users-employee_id/:employee_id` 
 - [Delete user by EmployeeID](users/employee_id/delete.md) : `DELETE /v3/users-employee_id/:employee_id`
 
-
-
-
-## Goals
-This will list the endpoints valid for managing goals.
-
-
 ## Units (Departments)
 This will list the endpoints valid for managing units (departments).
-
 
 ## Teams
 This will list the endpoints valid for managing teams.
 
-
 ## Groups (Access Groups)
 This will list the endpoints valid for managing access groups.
-
 
 ## Coaches
 This will list the endpoints valid for managing coaches.
 
-
 ## Courses
 This will list the endpoints valid for managing courses.
 
-
-## Orders (CourseShop only)
-This will list the endpoints valid for managing orders.
-
-
-## Customers (CourseShop only)
-This will list the endpoints valid for managing customers.
-
+## Goals
+This will list the endpoints valid for managing goals.
 
 ## Paths (Performance Appraisal)
 This will list the endpoints valid for managing paths.

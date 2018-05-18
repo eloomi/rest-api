@@ -20,6 +20,13 @@ curl --request GET \
   --header 'ClientId: <your_client_id>' \
   --header 'Authorization: Bearer <your_bearer_token>'
 ```
+```bash
+curl --request GET \
+  --url 'https://api.eloomi.com/v3/users?mode=active' \
+  --header 'Content-Type: application/json' \
+  --header 'ClientId: <your_client_id>' \
+  --header 'Authorization: Bearer <your_bearer_token>'
+```
 
 ## Success Response
 **Code**: `200 OK`

@@ -9,10 +9,10 @@ Updates the specified user and returns the user with the new data
 
 | Name | In | Type | Required | Details |
 | --- | --- | --- | --- | --- |
-| :pk | Path | Integer | Yes | The primary key (id) of the user to update |
+| :employee_id | Path | Mixed | Yes | The employee_id of the user to update |
 | first_name | Body | String | No |  |
 | last_name | Body | String  | No | |
-| employee_id | Body | String  | No | Employee ID property field. **OBS: Not the same as `:pk`** |
+| employee_id | Body | String  | No | Employee ID property field. **OBS: Not the same as the users `:pk`** |
 | start_of_employment_at | Body | String  | No | (Format: "yyyy-mm-dd hh:mm:ss") |
 | end_of_employment_at | Body | String  | No | (Format: "yyyy-mm-dd hh:mm:ss")	 |
 | email | Body | String  | No |  |
