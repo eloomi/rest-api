@@ -1,21 +1,20 @@
-# Updates a specific user
-Updates the specified user and returns the user with the new data
+# Creates a user
+Creates the specified user and returns the user
 
-**URL**: `/v3/users/:pk`
+**URL**: `/v3/users`
 
-**Method**: `PATCH`
+**Method**: `POST`
 
 **Parameters**
 
 | Name | In | Type | Required | Details |
 | --- | --- | --- | --- | --- |
-| :pk | Path | Integer | Yes | The primary key (id) of the user to update |
 | first_name | Body | String | No |  |
 | last_name | Body | String  | No | |
 | employee_id | Body | String  | No | Employee ID property field. **OBS: Not the same as `:pk`** |
 | start_of_employment_at | Body | String  | No | (Format: "yyyy-mm-dd hh:mm:ss") |
 | end_of_employment_at | Body | String  | No | (Format: "yyyy-mm-dd hh:mm:ss")	 |
-| email | Body | String  | No |  |
+| email | Body | String  | Yes |  |
 | username | Body | String  | No | Alternative for email so the user can log in with username and not email. |
 | personal_email | Body | String  | No | Secondary email |
 | activate | Body | Boolean  | No | Set the value to 1 or true, to activate the user. Set the value to 0 or false, to deactivate the user.	 |
@@ -43,7 +42,8 @@ Updates the specified user and returns the user with the new data
 ## Request example
 ```json
 {
-  "first_name": "API Testing"
+	"first_name": "API Testing",
+	"email": "api_test@eloomi.com"
 }
 ```
 
@@ -57,41 +57,41 @@ Updates the specified user and returns the user with the new data
     "status": "OK",
     "status_code": 200,
     "message": null,
-    "extended_message": "The user was updated.",
+    "extended_message": "The user was created.",
     "data": {
-        "id": 1,
+        "id": 168,
         "first_name": "API Testing",
-        "last_name": "Admin",
+        "last_name": "",
         "employee_id": null,
-        "email": "admin@eloomi.com",
+        "email": "api_test@eloomi.com",
         "username": null,
         "activated_at": null,
-        "gender": "M",
-        "birthday": "2017-01-01",
-        "department_id": [],
+        "gender": null,
+        "birthday": null,
+        "department_id": null,
         "user_permission": "user",
-        "start_of_employment_at": "2017-07-01 09:30:11",
+        "start_of_employment_at": null,
         "end_of_employment_at": null,
         "personal_email": null,
-        "title": "Superadmin",
-        "phone": "",
+        "title": null,
+        "phone": null,
         "mobile_phone": null,
         "language": "en",
         "access_groups": [
             {
-                "id": 2,
-                "name": "admin"
+                "id": 3,
+                "name": "user"
             }
         ],
-        "country": "",
-        "location": "",
-        "legal": "",
-        "level": 0,
-        "initials": "",
+        "country": null,
+        "location": null,
+        "legal": null,
+        "level": null,
+        "initials": null,
         "sub_company": null,
         "skill_level": null,
         "salary_id": null,
-        "team_id": [],
+        "team_id": null,
         "direct_manager_ids": null,
         "custom_attributes": {
             "test_attribute": null
@@ -99,9 +99,34 @@ Updates the specified user and returns the user with the new data
     }
 }
 ```
-## Failure Response
-This failure response occurs when providing a non-existing `:pk` for the request
 
-**Code**: `204 No Content`
+## Failure Response
+This failure response occurs when an email is not provided
+
+**Code**: `400 Bad Request`
 
 **Content-Type**: `application/json`
+```json 
+{
+    "status": "Bad Request",
+    "status_code": 400,
+    "message": "Something went wrong during the user creation. Please try again.",
+    "extended_message": "Undefined index: email"
+}
+```
+
+---
+
+This failure response occurs when an email already exists
+
+**Code**: `400 Bad Request`
+
+**Content-Type**: `application/json`
+```json 
+{
+    "status": "Bad Request",
+    "status_code": 400,
+    "message": "Something went wrong during the user creation. Please try again.",
+    "extended_message": "User with the email [api_test@eloomi.com] already exists."
+}
+```

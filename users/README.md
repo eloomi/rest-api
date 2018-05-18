@@ -1,7 +1,7 @@
 # Users
 Valid endpoints for the users API.
 - [List users](users/get.md) : `GET /v3/users`
-- Create user : `POST /v3/users`
+- [Create user](users/post.md) : `POST /v3/users`
 - [Get user](users/pk/get.md) : `GET /v3/users/:pk`
 - [Update user](users/pk/patch.md) : `PATCH /v3/users/:pk`
 - Delete user : `DELETE /v3/users/:pk`
