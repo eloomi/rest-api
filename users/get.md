@@ -5,9 +5,12 @@ Lists all users in the platform that are not deleted.
 
 **Method**: `GET`
 
-**Auth required**: YES
+**Parameters**
 
-**Parameters**: None
+| Name | In | Type | Required | Details |
+| --- | --- | --- | --- | --- |
+| per_page | Query | Integer (Default: `25`) | No | Paginates the result by value provided |
+| mode | Query | String (Options: `all`, `pending`, `active`, `inactive`) (Default: `all`) | No | Filters result on user-status |
 
 ## Success Response
 **Code**: `200 OK`

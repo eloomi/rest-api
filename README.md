@@ -1,5 +1,5 @@
-# eloomi Rest API v3 documentation
-The eloomi Rest API contains all the needed information and details to get started!
+# eloomi REST API v3 documentation
+The eloomi REST API contains all the needed information and details to get started!
 
 ## Authentication
 Authenticating with the API is done with bearer tokens, and requires a Client ID and Client Secret, which can be provided by reaching out to us, and the process to authenticate is as follow.
@@ -35,12 +35,51 @@ X-RateLimit-Remaining : 599
 ```
 If you exhaust your ratelimit, an additional header will be provided to tell when your ratelimit is reset.
 
-## Users
-This will list the endpoints valid for managing users.
+
+## Failure Responses
+**Invalid Bearer Token**
+
+**Status**: 401 Unauthorized
+```json
+{
+    "error": "Unauthenticated."
+}
+```
+
+**Invalid `client_id` or `client_secret`**
+
+**Status**: 400 Bad Request 
+```json
+{
+    "error": "invalid_client",
+    "message": "Client authentication failed"
+}
+```
+
+**Invalid `scope`**
+
+**Status**: 400 Bad Request 
+```json
+{
+    "error": "invalid_scope",
+    "message": "The requested scope is invalid, unknown, or malformed",
+    "hint": "Check the `user` scope"
+}
+```
+
+##[Users](users/README.md)
+Valid endpoints for the users API.
 - [List users](users/get.md) : `GET /v3/users`
-- Get user : `GET /v3/users/:id`
 - Create user : `POST /v3/users`
-- Update user : `PATCH /v3/users/:id`
+- [Get user](users/pk/get.md) : `GET /v3/users/:pk`
+- [Update user](users/pk/patch.md) : `PATCH /v3/users/:pk`
+- Delete user : `DELETE /v3/users/:pk`
+
+**Custom User-endpoints:**
+- Get user by EmployeeID : `GET /v3/users-employee_id/:employee_id` 
+- Update user by EmployeeID : `PATCH /v3/users-employee_id/:employee_id` 
+- Delete user by EmployeeID : `DELETE /v3/users-employee_id/:employee_id` 
+
 
 
 ## Goals
