@@ -1,20 +1,15 @@
-# Creates a unit (department)
-Creates the specified unit and returns it.
-Note that Units (Departments) are not unique by default, as multiple departments can have the same name and code.
+# Updates a specific unit (department)
+Updates the specified unit and returns the unit with the new data
 
-**OBS:** If you need to single out a unit (department) to ensure only one exists, look at the `unique` parameter below!
+**URL**: `/v3/units/:pk`
 
-**OBS:** Partial creation/update is enabled for Units (Departments), which means that supplying a related value for leaders or users will not result in an error, the value will just be ignored. Please make sure optional properties are correct, in case users or leaders are not set on the unit upon creation.
-
-**URL**: `/v3/units`
-
-**Method**: `POST`
+**Method**: `PATCH`
 
 **Parameters**
 
 | Name | In | Type | Required | Details |
 | --- | --- | --- | --- | --- |
-| name | Body | String | Yes | Unit Property field |
+| name | Body | String | No | Unit Property field |
 | code| Body | String  | No | Unit identifier |
 | parent_id | Body | Integer| No | `:pk` of the parent department. Used to build hierarchies. |
 | parent_code | Body | String  | No | `code` of the parent department. Used to build hierarchies. |
@@ -30,19 +25,17 @@ Note that Units (Departments) are not unique by default, as multiple departments
 | remove_user_ids | Body | Integer[] | No | Array of `:pk` of users that should be removed from this unit |
 | add_user_ids | Body | Integer[] | No | Array of `:pk` of users that should be assigned to this unit |
 | access_groups | Body | Integer[] | No | Array of `id's` of the access groups that should be added to this unit |
-| unique | Query | String | No| Defines which column is to be used for uniqueness |
 
 ## Request example
 ```bash
-curl --request POST \
-  --url 'https://api.eloomi.com/v3/units?unique=name' \
+curl --request PATCH \
+  --url 'https://api.eloomi.com/v3/units/:pk' \
   --header 'Content-Type: application/json' \
   --header 'ClientId: <your_client_id>' \
   --header 'Authorization: Bearer <your_bearer_token>' \
   --data '{
-            "name": "API Test Department",
-            "leaders": [1, 5],
-            "users": [2,3]
+            "code": "api_test_code",
+            "parent_id": 353
           }'
 ```
 
@@ -56,12 +49,12 @@ curl --request POST \
     "status": "OK",
     "status_code": 200,
     "message": null,
-    "extended_message": "New unit created.",
+    "extended_message": "Unit was updated.",
     "data": {
-        "id": 352,
+        "id": 354,
         "name": "API Test Department",
-        "code": "api test department",
-        "parent_id": null,
+        "code": "api_test_code",
+        "parent_id": 353,
         "users": [],
         "leaders": [],
         "access_groups": []
@@ -70,32 +63,17 @@ curl --request POST \
 ```
 
 ## Error Responses
-This failure response occurs when a name is not supplied
+This failure response occurs when providing a non-existing `:pk` for the request
 
-**Code**: `400 Bad Request`
+**Code**: `204 No Content`
 
 **Content-Type**: `application/json`
-```json 
+
+```json
 {
     "status": "Bad Request",
     "status_code": 400,
-    "message": "Could not create the unit, try again.",
-    "extended_message": "Unit name parameter is missing."
-}
-```
-
----
-
-This failure response occurs when a unit defined by the `unique` parameter already exists
-
-**Code**: `400 Bad Request`
-
-**Content-Type**: `application/json`
-```json 
-{
-    "status": "Bad Request",
-    "status_code": 400,
-    "message": "The unit already exists with the specified unique identifier [name:API Test Department]",
-    "extended_message": "Unit already exists"
+    "message": "Could not update the unit, try again.",
+    "extended_message": "Unit not found"
 }
 ```
