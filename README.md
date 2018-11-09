@@ -7,7 +7,7 @@ Initiate a POST-Request to
 ```
 https://api.eloomi.com/oauth/token
 ```
-with the following headers:
+with the following form-data (parameters):
 ``` 
 grant_type: client_credentials
 client_id: 200
